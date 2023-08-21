@@ -12,7 +12,7 @@
                         </group>
                     </group>
                     <footer>
-                        <button name="get_report" string="Imprimir" type="object" class="oe_right oe_highlight"/>
+                        <button name="excel" string="Imprimir" type="object" class="oe_right oe_highlight"/>
                         <button special="cancel" string="Cancelar" class="oe_right"/>
                     </footer>
                 </form>
