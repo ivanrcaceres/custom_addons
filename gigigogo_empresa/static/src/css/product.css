@@ -1,0 +1,24 @@
+.o_form_view .oe_avatar > img {
+    max-width: 300px !important;
+    max-height: 300px !important;
+}
+
+.o_followers_title_box {
+    margin-left: 2px !important;
+}
+
+
+.o_followers {
+    display: block !important;
+}
+
+@media (max-width: 756px) {
+    .o_followers_actions {
+        display: none !important;
+    }
+}
+
+
+
+
+

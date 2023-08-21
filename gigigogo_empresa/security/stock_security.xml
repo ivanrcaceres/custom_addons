@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+
+        <record id="group_hidden_cost_field" model="res.groups" >
+           <field name="name">Ocultar Costo Producto</field>
+           <field name="category_id" ref="base.module_category_hidden"/>
+       </record>
+<!--    Se limita el acceso a facturación-->
+   <record model="ir.ui.menu" id="account.menu_finance">
+        <field name="groups_id" eval="[(6,0,[ref('account.group_account_manager')])]"/>
+    </record>
+
+</odoo>

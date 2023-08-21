@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+
+        <record id="prueba_security_ivan" model="ir.rule">
+            <field name="name">prueba security ivan</field>
+            <field name="model_id" ref="relacion_timbrado_order.relaciontimbfact"/>
+            <field name="perm_read" eval="0"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="1"/>
+
+        </record>
+
+    </data>
+</odoo>

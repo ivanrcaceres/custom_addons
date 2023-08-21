@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="odoo_abajo_remplace" inherit_id="website.brand_promotion">
+        <xpath expr="//div[@class='o_brand_promotion']" position="replace">
+                    <label></label>
+        </xpath>
+    </template>
+</odoo>

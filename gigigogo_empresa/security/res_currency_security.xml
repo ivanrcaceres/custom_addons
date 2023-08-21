@@ -1,0 +1,23 @@
+<odoo>
+     <record id="res_currency_rule_for_ambito" model="ir.rule">
+        <field name="name">Regla Moneda por ambito para cajero</field>
+        <field name="model_id" ref="base.model_res_currency"/>
+        <field name="groups" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="domain_force">[('ambito','in',['venta',False])]</field>
+    </record>
+
+    <record id="res_currency_rule_for_ambito_manager" model="ir.rule">
+        <field name="name">Regla Moneda por ambito para maganer</field>
+        <field name="model_id" ref="base.model_res_currency"/>
+        <field name="groups" eval="[(4, ref('point_of_sale.group_pos_manager'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="domain_force">[('ambito','in',['venta','compra',False])]</field>
+    </record>
+</odoo>

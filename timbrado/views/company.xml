@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="view_res_company_form_herencia" model="ir.ui.view">
+            <field name="name">view.res.company.form.herencia</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/div[@class='oe_title']" position="after">
+
+
+                    <group string="Timbrado" name="timbrado" priority="1">
+                        <field name="timbrado"/>
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin"/>
+                        <field name="numero_sucursal"/>
+                        <field name="numero_caja"/>
+                        <field name="numero_inicio"/>
+                        <field name="numero_fin"/>
+                        <field name="ultimo_numero_impreso" readonly="True"/>
+                        <field name="fecha_ultimo_numero_impreso" readonly="True"/>
+                        <field name="ultimo_numero_completo" readonly="True"/>
+
+                    </group>
+
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

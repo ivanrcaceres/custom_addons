@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <!--  dentro de ente record se anaden los campos read only-->
+        <record id="view_hidden_cost_product_template" model="ir.ui.view">
+            <field name="name">product_t.hidden.cost</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="groups_id" eval="[(6, 0, [ref('gigigogo_empresa.group_hidden_cost_field')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='standard_price']" position="replace">
+                    <field name="standard_price" attrs="{'invisible':True}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hidden_cost_product_product" model="ir.ui.view">
+            <field name="name">product_p.hidden.cost</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="groups_id" eval="[(6, 0, [ref('gigigogo_empresa.group_hidden_cost_field')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='standard_price']" position="replace">
+                    <field name="standard_price" attrs="{'invisible':True}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hidden_cost_product_product_variant" model="ir.ui.view">
+            <field name="name">product_p.hidden.cost_variant</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='standard_price']" position="replace">
+                    <field name="standard_price" attrs="{'invisible':True}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

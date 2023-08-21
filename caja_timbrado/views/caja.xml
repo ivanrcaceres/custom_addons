@@ -1,0 +1,99 @@
+<odoo>
+  <data>
+      <!-- -->
+    <record id="view_pos_config_her" model="ir.ui.view">
+            <field name="name">view.pos.config.her</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/div[@id='title']" position="after">
+
+
+                    <group string="Timbrado" name="timbrado" priority="1">
+                        <field name="timbrado"/>
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin"/>
+                        <field name="numero_sucursal"/>
+                        <field name="numero_caja"/>
+                        <field name="numero_inicio"/>
+                        <field name="numero_fin"/>
+                        <!--
+                        <field name="ultimo_numero_impreso" readonly="True"/>
+                        -->
+                        <field name="ultimo_numero_impreso"/>
+                        <!--
+                        <field name="fecha_ultimo_numero_impreso" readonly="True"/>
+                        -->
+                        <field name="fecha_ultimo_numero_impreso" />
+                        <!--
+                        <field name="ultimo_numero_completo" readonly="True"/>
+                        -->
+                        <field name="ultimo_numero_completo"/>
+                        <field name="factura_para_imprimir"/>
+
+                    </group>
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="caja_timbrado.list">
+      <field name="name">caja_timbrado list</field>
+      <field name="model">caja_timbrado.caja_timbrado</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="caja_timbrado.action_window">
+      <field name="name">caja_timbrado window</field>
+      <field name="res_model">caja_timbrado.caja_timbrado</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="caja_timbrado.action_server">
+      <field name="name">caja_timbrado server</field>
+      <field name="model_id" ref="model_caja_timbrado_caja_timbrado"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="caja_timbrado" id="caja_timbrado.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="caja_timbrado.menu_1" parent="caja_timbrado.menu_root"/>
+    <menuitem name="Menu 2" id="caja_timbrado.menu_2" parent="caja_timbrado.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="caja_timbrado.menu_1_list" parent="caja_timbrado.menu_1"
+              action="caja_timbrado.action_window"/>
+    <menuitem name="Server to list" id="caja_timbrado" parent="caja_timbrado.menu_2"
+              action="caja_timbrado.action_server"/>
+    -->
+  </data>
+</odoo>

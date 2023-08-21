@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="account_journal_inherited">
+            <field name="name">account_journal.form.inh</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='type']" position="after">
+                     <field name="is_wholesale" attrs="{'invisible': [('type','!=','sale')]}"/>
+                 </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

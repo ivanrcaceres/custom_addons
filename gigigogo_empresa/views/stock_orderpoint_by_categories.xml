@@ -1,0 +1,17 @@
+<odoo>
+    <record id="stock_orderpoint_categories" model="ir.ui.view">
+        <field name="name">stock.orderpoint.categories.form.custom</field>
+        <field name="model">stock.warehouse.orderpoint.categories</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+
+        </field>
+    </record>
+
+
+
+     <menuitem
+            id="menu_reordering_rules_config"
+            action="action_orderpoint_form"
+            name="Reordering Rules" parent="menu_stock_inventory_control" sequence="10"/>
+</odoo>

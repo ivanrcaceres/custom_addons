@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="address_b2b_2" inherit_id="website_sale.address_b2b">
+        <xpath expr="//label[@for='vat']" position="replace">
+                    <label class="col-form-label" for="vat">RUC o CI </label>
+        </xpath>
+    </template>
+</odoo>

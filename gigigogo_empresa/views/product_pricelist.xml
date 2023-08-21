@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_pricelist_item_form_custom" model="ir.ui.view">
+            <field name="name">product.pricelist.item.form.custom</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <h1>
+                        <field name="pricelist_id" options="{'no_create': True}" required="1"/>
+                    </h1>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_form_product_custom_pricelist" model="ir.ui.view">
+            <field name="name">product.template.product.form.custom.pricelist</field>
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales']" position="after">
+                    <page name="precios" string="Precios">
+
+                        <div groups="product.group_pricelist_item">
+                            <separator string="Pricelist Items"/>
+                            <field name="lista_de_precios" widget="one2many_list" domain="[('product_tmpl_id','=',id)]"
+                                   context="{'default_product_tmpl_id':id,'default_applied_on':'1_product','default_base':'list_price'}">
+                                <tree string="Lista de Precios">
+                                    <field name="pricelist_id" required="1"/>
+                                    <field name="product_id" string="Variante"/>
+                                    <field name="product_tmpl_id" domain="[('id','=',product_tmpl_id)]" required="1"
+                                           string="Producto"/>
+                                    <field name="min_quantity" required="1"/>
+                                    <field name="fixed_price" required="1"/>
+                                </tree>
+
+                            </field>
+                        </div>
+
+
+                        <!--<field name="lista_de_precios" widget="one2many_list" domain="[('product_tmpl_id','=',id)]"-->
+                        <!--context="{'default_product_tmpl_id':id,'default_applied_on':'1_product','default_base':'list_price'}">-->
+                        <!--<tree string="Lista de Precios">-->
+                        <!--<field name="pricelist_id" required="1"/>-->
+                        <!--<field name="product_tmpl_id" domain="[('id','=',product_tmpl_id)]" required="1"/>-->
+                        <!--<field name="min_quantity" required="1"/>-->
+                        <!--<field name="price" required="1"/>-->
+                        <!--</tree>-->
+                        <!--</field>-->
+
+                    </page>
+                </xpath>
+            </field>
+
+        </record>
+
+    </data>
+</odoo>

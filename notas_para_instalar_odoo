@@ -1,0 +1,25 @@
+compra
+venta
+punto de venta
+partner ruc
+gigigogo_empresa
+timbrado
+Odoo12 Accounting
+Pos Kitchen Screen
+aar_pos_ticket
+pos_order_mgmt
+Print POS Session Report
+relacion_timbrado_order
+
+-----------
+compra
+venta
+punto de venta
+partner ruc
+gigigogo_empresa
+caja_timbrado (aca hace los calculos de numero de fectura)
+Odoo12 Accounting
+aar_pos_ticket (edita el ticket)
+pos_order_mgmt (este hace que inicie con todo ceros)
+Print POS Session Report
+odoo_qweb para el reporte de las ventas

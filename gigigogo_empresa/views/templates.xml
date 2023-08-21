@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="custom assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/gigigogo_empresa/static/src/css/product.css"></link>
+            </xpath>
+        </template>
+
+        <template id="pos_ruc_herencia_asset" name="pos_ruc_herencia asset" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/gigigogo_empresa/static/src/js/pos.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

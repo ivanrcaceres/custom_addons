@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_currency_paraguay_inh" model="ir.ui.view">
+            <field name="name">view.currency.paraguay.inh</field>
+            <field name="model">res.currency</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_currency_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='rate']" position="replace">
+                    <field name="rate" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='rate']" position="after">
+                    <field name="moneda_compania" invisible="1"/>
+                    <field name="ambito" attrs="{'required': [('moneda_compania','=',False)]}"/>
+            </xpath>
+            </field>
+        </record>
+
+        <record id="view_currency_rratte_inh" model="ir.ui.view">
+            <field name="name">view.currency_rate.tree.inh</field>
+            <field name="model">res.currency.rate</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="base.view_currency_rate_tree"/>
+            <field name="arch" type="xml">
+
+            <xpath expr="//tree" position="attributes">
+                   <attibute name="editable"/>
+            </xpath>
+            </field>
+        </record>
+
+        <record id="view_currency_rate_inh" model="ir.ui.view">
+            <field name="name">view.currency_rate.inh</field>
+            <field name="model">res.currency.rate</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_currency_rate_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='rate']" position="replace">
+                    <field name="rate" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='rate']" position="after">
+                    <field name="set_venta" string="Cotizacion"/>
+            </xpath>
+            </field>
+        </record>
+        <record id="view_currency_rate_inh_tree_paraguay" model="ir.ui.view">
+            <field name="name">view.currency_rate.inh.paraguay</field>
+            <field name="model">res.currency.rate</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="base.view_currency_rate_tree"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='rate']" position="replace">
+                    <field name="rate" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='rate']" position="after">
+                    <field name="set_venta" string="Cotizacion"/>
+            </xpath>
+            </field>
+        </record>
+
+
+
+  </data>
+</odoo>

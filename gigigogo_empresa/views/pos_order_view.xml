@@ -1,0 +1,15 @@
+
+<odoo>
+    <data>
+         <record model="ir.ui.view" id="pos_order_inherited">
+            <field name="name">pos.order.form.inh</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//button[@name='refund']" position="after">
+                     <button name="generate_picking" string="Generar Picking" type="object" attrs="{'invisible':[('picking_id','!=',False)]}"/>
+                 </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

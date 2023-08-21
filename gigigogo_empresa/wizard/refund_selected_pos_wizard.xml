@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="refund_order_wizard_report_view" model="ir.ui.view">
+            <field name="name">refund.order.wizard</field>
+            <field name="model">refund.order.pos.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <footer>
+                        <button name="refund_action" string="Refund Order" type="object" class="oe_highlight"/>
+<!--                        <button name="refund_paid_action" string="Refund Order Paid" type="object"-->
+                                class="oe_highlight"/>
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+                name="Refund Order"
+                res_model="refund.order.pos.wizard"
+                src_model="pos.order"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"
+                id="action_refund_pos"/>
+
+<!--        <act_window-->
+<!--                name="Refund Order Paid"-->
+<!--                res_model="refund.order.pos.wizard"-->
+<!--                src_model="pos.order"-->
+<!--                view_mode="form"-->
+<!--                target="new"-->
+<!--                key2="client_action_multi"-->
+<!--                id="action_refund_paid_pos"/>-->
+
+    </data>
+</odoo>

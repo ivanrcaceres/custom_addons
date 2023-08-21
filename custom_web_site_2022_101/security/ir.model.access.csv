@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_relacion_timbrado_order_custom_relaciontimbfact,relacion_timbrado_order.relaciontimbfact,relacion_timbrado_order.relaciontimbfact,1,1,1,1,1

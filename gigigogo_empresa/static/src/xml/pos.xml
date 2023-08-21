@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+    <t t-extend='ClientDetailsEdit'>
+        <t t-jquery='.client-details-right' t-operation='prepend'>
+            <div class='client-detail'>
+                <span class='label'>RUC</span>
+
+                <input class='detail client-email' name='ruc' type='number' max="7"
+                       t-att-value='partner.ruc || ""'/>
+
+            </div>
+
+            <div class='client-detail'>
+                <span class='label'>CI</span>
+
+                <input class='detail client-email' name='ci' type='number' max="7"
+                       t-att-value='partner.ci || ""'/>
+
+            </div>
+        </t>
+
+
+    </t>
+    <t t-extend='ClientDetails'>
+        <t t-jquery='.client-details-right' t-operation='prepend'>
+            <div class='client-detail'>
+
+                        <t t-if='partner.rucdv'>
+                            <span class='label'>RUC</span>
+                            <span class='detail client-phone'><t t-esc='partner.rucdv' /></span>
+                        </t>
+                <t t-if='!partner.rucdv'>
+                            <t t-if='partner.ci'>
+                                <span class='label'>CI</span>
+                                <span class='detail client-phone'><t t-esc='partner.ci' /></span>
+                            </t>
+                    <t t-else="">
+                                <span class='label'>RUC</span>
+                        <span class='detail client-phone empty'>N/A</span>
+                            </t>
+                        </t>
+
+
+            </div>
+        </t>
+    </t>
+
+    <t t-extend='ClientListScreenWidget'>
+        <t t-jquery='.client-list thead tr' t-operation='append'>
+            <th>RUC</th>
+            <th>CI</th>
+
+        </t>
+    </t>
+
+    <t t-extend='ClientLine'>
+        <t t-jquery='.client-line' t-operation='append'>
+
+           <td><t t-esc='partner.rucdv' /></td>
+            <td><t t-esc='partner.ci' /></td>
+
+        </t>
+    </t>
+
+
+
+
+
+
+
+
+</templates>

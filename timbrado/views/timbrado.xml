@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="view_timbrado_timbrado_form" model="ir.ui.view">
+            <field name="name">view.timbrado.timbrado.form</field>
+            <field name="model">timbrado.timbrado</field>
+            <field name="arch" type="xml">
+                <form string="Timbrado">
+                    <sheet>
+                        <group >
+                            <field name="name"/>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                            <field name="numero_sucursal"/>
+                            <field name="numero_caja"/>
+                            <field name="numero_inicio"/>
+                            <field name="numero_fin"/>
+                            <field name="ultimo_numero_impreso" readonly="True"/>
+                            <field name="fecha_ultimo_numero_impreso" readonly="True"/>
+                            <field name="ultimo_numero_completo" readonly="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_timbrado_timbrado_tree" model="ir.ui.view">
+            <field name="name">view.timbrado.timbrado.tree</field>
+            <field name="model">timbrado.timbrado</field>
+            <field name="arch" type="xml">
+                <tree string="Timbrados">
+                    <field name="name"/>
+                    <field name="fecha_inicio"/>
+                    <field name="fecha_fin"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_timbrado_timbrado_view" model="ir.actions.act_window">
+            <field name="name">Timbrado</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">timbrado.timbrado</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Timbrados
+                </p>
+                <p>
+                    Click 'Nuevo' para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_timbrado_timbrado_root" name="Timbrado" sequence="0"/>
+
+        <menuitem id="menu_timbrado_timbrado" name="Timbrado" parent="menu_timbrado_timbrado_root" sequence="0"/>
+
+        <menuitem id="menu_timbrado_timbrado_2" name="Timbrado" parent="menu_timbrado_timbrado" sequence="0"
+                  action="action_timbrado_timbrado_view"/>
+
+    </data>
+</odoo>

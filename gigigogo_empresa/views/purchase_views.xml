@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="purchase_order_form_custom" model="ir.ui.view">
+            <field name="name">purchase.order.form.custom</field>
+            <field name="model">purchase.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <!--                <xpath expr="//field[@name='date_order']" position="after">-->
+                <!--                    <field name="date_approve" groups="base.group_no_one" readonly="False"/>-->
+                <!--                </xpath>-->
+                <xpath expr="//field[@name='order_line']//field[@name='product_id']" position="before">
+                    <field name="x_image_product" widget='image' readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//field[@name='account_analytic_id']" position="replace">
+                    <field name="account_analytic_id" context="{'default_partner_id':parent.partner_id}"
+                           groups="purchase.group_analytic_accounting" invisible="True"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//field[@name='analytic_tag_ids']" position="replace">
+                    <field name="analytic_tag_ids" groups="purchase.group_analytic_accounting" widget="many2many_tags"
+                           options="{'color_field': 'color'}" invisible="True"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <record id="purchase_order_line_form_custom" model="ir.ui.view">
+            <field name="name">purchase.order.line.form.custom</field>
+            <field name="model">purchase.order.line</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="before">
+                    <field name="ta"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

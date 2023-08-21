@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--        <record id="product_category_list_view_custom" model="ir.ui.view">-->
+        <!--            <field name="name">product.category.list.custom</field>-->
+        <!--            <field name="model">product.category</field>-->
+        <!--            <field name="inherit_id" ref="product.product_category_list_view"/>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <xpath expr="//tree/field[@name='display_name']" position="before">-->
+        <!--                    <field name="x_product_code"></field>-->
+        <!--                </xpath>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <!--        <record id="product_category_form_custom" model="ir.ui.view">-->
+        <!--            <field name="name">product.category.form.custom</field>-->
+        <!--            <field name="model">product.category</field>-->
+        <!--            <field name="type">form</field>-->
+        <!--            <field name="inherit_id" ref="product.product_category_form_view"/>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <xpath expr="//field[@name='name']" position="after">-->
+        <!--                    <group col="2">-->
+        <!--                        <field name="x_product_code" class="oe_inline"/>-->
+        <!--                    </group>-->
+        <!--                </xpath>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+
+        <record id="product_custom_tree_view" model="ir.ui.view">
+            <field name="name">product_custom.tree.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='default_code']" position="after">
+                    <field name="x_original_code"/>
+                </xpath>
+                <xpath expr="//tree/field[@name='virtual_available']" position="after">
+                    <field name="sales_total_count" string="Cantidad Vendida"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="action_product_pos_sale_list" model="ir.actions.act_window">
+            <field name="name">POS Sales Order Lines</field>
+            <field name="res_model">pos.order.line</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_product_id': [active_id], 'default_product_id': active_id}</field>
+            <!--            <field name="domain">[('state', 'in', ['invoiced', 'done'])]</field>-->
+        </record>
+
+        <record id="product_product_custom_tree_view" model="ir.ui.view">
+            <field name="name">product_product_custom.tree.view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='virtual_available']" position="after">
+                    <field name="sales_total_count" string="Cantidad Vendida"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_product_form_product_custom" model="ir.ui.view">
+            <field name="name">product.product.product.form.custom</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+
+                <button name="toggle_active" position="before">
+                    <button class="oe_stat_button" name="action_view_sales_pos" type="object" icon="fa-usd"
+                            groups="sales_team.group_sale_salesman">
+                        <field string="Ventas POS" name="sales_count_pos" widget="statinfo"/>
+                    </button>
+                </button>
+
+            </field>
+        </record>
+
+        <record id="product_template_form_product_custom" model="ir.ui.view">
+            <field name="name">product.template.product.form.custom</field>
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="before">
+                    <field name="x_original_code"></field>
+                </xpath>
+
+
+                <button name="action_view_sales" position="after">
+                    <button class="oe_stat_button" name="action_view_sales_pos" type="object" icon="fa-usd"
+                            groups="sales_team.group_sale_salesman">
+                        <field string="Ventas POS" name="sales_count_pos" widget="statinfo"/>
+                    </button>
+                </button>
+
+            </field>
+        </record>
+
+
+<!--          <record id="pproduct_template_form_view_custom" model="ir.ui.view">-->
+<!--            <field name="name">product.template.view.form.custom</field>-->
+<!--            <field name="model">product.template</field>-->
+<!--            <field name="type">form</field>-->
+<!--            <field name="inherit_id" ref="product.product_template_form_view"/>-->
+<!--            <field name="arch" type="xml">-->
+
+<!--                <xpath expr="//field[@name='image_medium']" position="replace">-->
+<!--                    <field name="image" widget="image" class="oe_avatar"/>-->
+<!--                </xpath>-->
+
+<!--            </field>-->
+<!--        </record>-->
+
+        <!--Inherit quotations search view-->
+        <record id="view_product_template_inherit_search" model="ir.ui.view">
+            <field name="name">product_template.search.expand.filter</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='name']" position="replace">
+                    <field name="name" string="Product"
+                           filter_domain="['|','|','|',('default_code','ilike',self),('name','ilike',self),('barcode','ilike',self),('x_original_code','ilike',self)]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_custom_kanban_view" model="ir.ui.view">
+            <field name="name">product_custom.kanban.view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <small t-if="record.x_original_code.value">[<field name="x_original_code"/>]
+                    </small>
+                </xpath>
+                <ul position="inside">
+                    <li>
+                        Vendido:
+                        <field name="sales_total_count"/>
+                    </li>
+
+                </ul>
+            </field>
+        </record>
+
+
+        <!--herencia lotes de productos tree viee-->
+        <record id="stock_production_lot_custom_tree_view" model="ir.ui.view">
+            <field name="name">stock.production.lot.tree.view</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='create_date']" position="before">
+                    <field name="alert_date"/>
+                    <field name="life_date"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--ocultar actualizar cantidad de produtos-->
+        <record id="product_stock_quantity_hand_form" model="ir.ui.view">
+            <field name="name">product_template.stock.quantity</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+            <field name="arch" type="xml">
+
+                <button name="%(stock.action_view_change_product_quantity)d" position="replace">
+                    <button name="%(stock.action_view_change_product_quantity)d" string="Update Qty On Hand"
+                            type="action"
+                             groups="stock.group_stock_manager"/>
+
+                </button>
+            </field>
+        </record>
+
+    </data>
+</odoo>

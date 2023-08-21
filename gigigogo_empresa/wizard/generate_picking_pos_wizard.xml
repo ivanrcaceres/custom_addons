@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="generate_picking_wizard_report_view" model="ir.ui.view">
+            <field name="name">generate.picking.wizard</field>
+            <field name="model">generate.picking.pos.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <footer>
+                        <button name="generate_picking_action" string="Generar Picking" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+                name="Generar Picking"
+                res_model="generate.picking.pos.wizard"
+                src_model="pos.order"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"
+                id="action_generate_picking_pos"/>
+
+    </data>
+</odoo>

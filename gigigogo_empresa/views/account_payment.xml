@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_pay_form_cobro_tran_inh" model="ir.ui.view">
+            <field name="name">view.payment_form_cobro_tran.inh</field>
+            <field name="model">account.payment</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="payment_subtype" invisible="1"/>
+                    <field name="numero_transaccion" string="Nro de Cheque"  attrs="{'invisible':[('payment_subtype','!=', 'third_check')],'required':[('payment_subtype','=', 'third_check')]}"  />
+                    <field name="banco" attrs="{'invisible':[('payment_subtype','!=', 'third_check')],'required':[('payment_subtype','=', 'third_check')]}" />
+                    <field name="fecha_emision_cheque" attrs="{'invisible':[('payment_subtype','!=', 'third_check')],'required':[('payment_subtype','=', 'third_check')]}" />
+                    <field name="librador" string="Emisor" attrs="{'invisible':[('payment_subtype','!=', 'third_check')],'required':[('payment_subtype','=', 'third_check')]}" />
+                    <field name="tipo_cheque" attrs="{'invisible':[('payment_subtype','!=', 'third_check')],'required':[('payment_subtype','=', 'third_check')]}" />
+                    <field name="fecha_cheque_diferido" attrs="{'invisible':[('tipo_cheque','!=', 'deferred')],'required':[('tipo_cheque','=', 'deferred')]}" />
+            </xpath>
+
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

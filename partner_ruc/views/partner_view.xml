@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+       <record id="view_ruc_partner_search" model="ir.ui.view">
+            <field name="name">partner.search.inh</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath  expr="//field[@name='user_id']" position="after">
+                    <field name="rucdv"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>

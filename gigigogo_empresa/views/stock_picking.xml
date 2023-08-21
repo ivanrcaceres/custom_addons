@@ -1,0 +1,84 @@
+<odoo>
+    <data>
+        <record id="stock_picking_form_custom" model="ir.ui.view">
+            <field name="name">stock.picking.form.custom</field>
+            <field name="model">stock.picking</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='move_lines']//field[@name='product_id']" position="before">
+                    <field name="x_image_product" widget='image' readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='move_lines']//field[@name='product_id']" position="replace">
+                    <field name="product_id" required="1"
+                           attrs="{'readonly': ['|', '&amp;', ('state', '!=', 'draft'), ('additional', '=', False), ('has_move_lines', '=', True)]}"
+                           options="{'no_create': True}"/>
+                </xpath>
+                <xpath expr="//button[@name='button_validate']" position="after">
+                    <button name="limpiar_reserva_cero" string="Limpiar reservados"
+                            type="object" class="oe_highlight" groups="stock.group_stock_manager"
+                             attrs="{'invisible': [('state','!=','assigned')]}"
+                    />
+                </xpath>
+
+
+                  <xpath expr="//field[@name='move_lines']//field[@name='product_uom']" position="after">
+                    <field name="x_quantity_of_not_proccess" groups="stock.group_stock_manager" />
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="stock_picking_form_custom_permision" model="ir.ui.view">
+            <field name="name">stock.picking.form.custom.permision</field>
+            <field name="model">stock.picking</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_manager') ])]"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//button[@name='button_validate']" position="replace">-->
+<!--                    <button name="button_validate" attrs="{'invisible': [('state','!=','assigned')]}" string="Validate"-->
+<!--                            groups="stock.group_stock_manager,stock.group_stock_user" type="object" class="oe_highlight"-->
+<!--                            states="assigned"/>-->
+
+<!--                </xpath>-->
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='location_id']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/group/group/field[@name='picking_type_id']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                    <attribute name="force_save">1</attribute>
+
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_backorder_confirmation_custom" model="ir.ui.view">
+            <field name="name">stock_backorder_confirmation.custom</field>
+            <field name="model">stock.backorder.confirmation</field>
+            <field name="inherit_id" ref="stock.view_backorder_confirmation"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='process_cancel_backorder']" position="replace">
+                    <button name="process_cancel_backorder" string="Sin Entregas Pendientes" type="object"
+                            class="btn-primary" groups="stock.group_stock_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

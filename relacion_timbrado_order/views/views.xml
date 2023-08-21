@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <record id="view_relacion_timbrado_order_relaciontimbfact_form" model="ir.ui.view">
+            <field name="name">view.relacion.timbrado.order.relaciontimbfact.form</field>
+            <field name="model">relacion_timbrado_order.relaciontimbfact</field>
+            <field name="arch" type="xml">
+                <form string="Relacion">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="venta"/>
+
+                            </group>
+                            <group name="group_right">
+                                <field name="factura"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_relacion_timbrado_order_relaciontimbfact_tree" model="ir.ui.view">
+            <field name="name">view.relacion.timbrado.order.relaciontimbfact.tree</field>
+            <field name="model">relacion_timbrado_order.relaciontimbfact</field>
+            <field name="arch" type="xml">
+                <tree string="Visit">
+
+                    <field name="venta"/>
+                    <field name="factura"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="action_relacion_timbrado_order_relaciontimbfact_view" model="ir.actions.act_window">
+            <field name="name">Relacion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">relacion_timbrado_order.relaciontimbfact</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Relaciones
+                </p>
+                <p>
+                    Click 'Nuevo' para añadir nuevos elementos
+                </p>
+            </field>
+        </record>
+
+
+
+
+        <menuitem id="menu_relacion_timbrado_order_relaciontimbfact_root" name="Relacion" sequence="10"/>
+
+        <menuitem id="menu_relacion_timbrado_order_relaciontimbfact_categ" name="Relacion" parent="menu_relacion_timbrado_order_relaciontimbfact_root" sequence="0"/>
+
+        <menuitem id="menu_relacion_timbrado_order_relaciontimbfact" name="Relacion" parent="menu_relacion_timbrado_order_relaciontimbfact_categ" sequence="0"
+                  action="action_relacion_timbrado_order_relaciontimbfact_view"/>
+
+       <record id="relacion_relaciontimbfact" model="res.groups">
+            <field name="name">Relacion_2023</field>
+        </record>
+
+
+    </data>
+</odoo>

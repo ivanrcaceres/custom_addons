@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="view_res_partner_form_herencia" model="ir.ui.view">
+            <field name="name">view.res.partner.form.herencia</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[@name='sales_purchases']" position="after">
+                    <group string="Timbrado" name="timbrado" priority="1">
+                        <field name="timbrado_id"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

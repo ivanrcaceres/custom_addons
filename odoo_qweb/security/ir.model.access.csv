@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_odoo_qweb_odoo_qweb,odoo_qweb.odoo_qweb,model_odoo_qweb_odoo_qweb,base.group_user,1,1,1,1

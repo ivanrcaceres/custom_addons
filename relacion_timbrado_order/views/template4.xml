@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="address_b2b_3" inherit_id="website_sale.address_b2b">
+        <xpath expr="//div[@id='wrap']//div[1]//div[2]//div[2]//div[1]//t[1]" position="replace">
+                <h2 class="o_page_header mt8">Datos del Cliente</h2>
+        </xpath>
+    </template>
+</odoo>

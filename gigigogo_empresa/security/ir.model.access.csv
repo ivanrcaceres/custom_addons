@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gigi_moneda,moneda,gigigogo_empresa.model_res_currency_rate,account.group_account_invoice,1,1,1,1
+access_gigi_emisor,emisor,pos_check.model_emisores_tarjetas,account.group_account_invoice,1,1,1,1
+accessgigi_stock_movi,stock.move.user,gigigogo_empresa.model_stock_move,stock.group_stock_user,1,1,1,1
+access_gigi_move_line,stock.move.line.user,stock_account.model_stock_move_line,stock.group_stock_user,1,1,1,1
+access_gigi_barcode,permisos para etiquetas,gigigogo.model_barcode_wizard,stock.group_stock_manager,1,1,1,1
+access_gigig_check,cheque tercero,pos_check.model_account_check_third,account.group_account_invoice,1,1,1,1
